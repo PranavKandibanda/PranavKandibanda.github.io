@@ -5,66 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me - Pranav Kandibanda</title>
   <link rel="stylesheet" href="static/index.css">
-  <link href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <header>
-    <div class = "links">
-        <a href = "https://github.com/Mad-coder-101" target="_blank"><img src="github.png" id = "github"></a>
-    </div>
-
-    <div class="header-container">
-      <h1>Hi, I'm Pranav Kandibanda</h1>
-      <p>A high school sophomore passionate about math, coding, and making a difference!</p>
+  <div class="background-gradient"></div>
+  <header class="main-header">
+    <div class="header-content glass">
+      <div class="github-link">
+        <a href="https://github.com/PranavKandibanda" target="_blank" title="GitHub">
+          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+        </a>
+      </div>
+      <h1 class="site-title">Hi, I'm Pranav Kandibanda</h1>
+      <p class="subtitle">A high school sophomore passionate about math, coding, and making a difference!</p>
     </div>
   </header>
 
-  <main>
-    <section id="about">
+  <main class="main-content">
+    <section class="glass card about-section">
       <h2>About Me</h2>
-      <p>Welcome to my space! I'm a high school sophomore who loves exploring the worlds of math and coding. </p>
+      <p>Welcome to my space! I'm a high school sophomore who loves exploring the worlds of math and coding.</p>
     </section>
 
-    <section id="skills">
+    <section class="glass card skills-section">
       <h2>Skills</h2>
-      <div class="skills-container">
-        <div class="skill">
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🧮</div>
           <h3>Mathematics</h3>
           <ul>
-            <li>Proficient in Calculus and problem solving.</li>
+            <li>I love math, and I have been doing Advanced level math for several years now.</li>
           </ul>
         </div>
-        <div class="skill">
+        <div class="skill-card">
+          <div class="skill-icon">💻</div>
           <h3>Coding</h3>
           <ul>
-            <li>Advanced Python programmer with a strong foundation in logic and data structures.</li>
-            <li>Has a certification for Python Entry Level Developer.</li>
+            <li>I'm an Advanced Python programmer with a strong foundation in logic and data structures.</li>
+            <li>I have a certification from the Python Institute for being a Python Entry Level programmer.</li>
+            <li>Ranked 2nd in district for Computer Programming and advanced to State through SkillsUSA</li>
           </ul>
         </div>
-        <div class = "skill p2">
+        <div class="skill-card">
+          <div class="skill-icon">🛡️</div>
           <h3>Cybersecurity</h3>
           <ul>
             <li>Created scripts for CyberPatriots, a cybersecurity competition</li>
             <li>Ranked among the top 150 teams in the nation in my first year.</li>
+            <li>Windows Captain for my CyberPatriot school club, teaching others about cybersecurity.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section class="glass card projects-section">
       <h2>Projects</h2>
-      <div class="projects-container">
+      <div class="projects-grid">
         <div class="project-card">
           <h3>Tutoring for a Cause</h3>
-          <p>Organized math and coding classes to raise $1000 for visually impaired students through VT Seva, a non-profit organization for the visually impaired.</p>
+          <p>Organized math and coding classes to raise $2k for visually impaired students through VT Seva, a non-profit organization for the visually impaired.</p>
         </div>
       </div>
     </section>
-
   </main>
 
-  <footer>
+  <footer class="footer glass">
     <p>&copy; 2025 Pranav Kandibanda. Built with ❤️ and innovation.</p>
   </footer>
 
