@@ -11,6 +11,11 @@ html, body {
   font-size: clamp(16px, 2vw, 20px);
 }
 
+/* Updated styles for better responsiveness and standardized units */
+html, body {
+  font-size: 16px; /* Base font size for rem scaling */
+}
+
 body {
   min-height: 100vh;
   width: 100vw;
@@ -40,6 +45,7 @@ body {
   margin-top: 40px;
   margin-bottom: 36px;
   z-index: 2;
+  box-shadow: 0 0 48px 16px #fff, 0 0 96px 32px #fff; /* Add white glow */
 }
 
 .header-content {
@@ -57,6 +63,98 @@ body {
   max-width: 600px; /* Shrink max width for site title area */
   width: 90vw;
   margin: 0 auto 2.5rem auto;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 700px) {
+  .main-header {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .header-content {
+    max-width: 95%;
+    width: 95%;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  .card {
+    padding: 0.7rem;
+    max-width: 95%;
+  }
+  .skills-section.glass,
+  .projects-section.glass {
+    max-width: 100%;
+    width: 100%;
+    padding: 1rem;
+    margin: 0 auto 1rem auto;
+  }
+  .skills-grid {
+    max-width: 100%;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  .skill-card,
+  .project-card {
+    max-width: 95%;
+    width: 100%;
+  }
+}
+
+/* Additional media queries for better responsiveness */
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
+  .main-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .header-content {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .skill-card, .project-card {
+    padding: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .site-title {
+    font-size: 1.5rem;
+  }
+  .about-section h2,
+  .skills-section h2,
+  .projects-section h2 {
+    font-size: 1rem;
+  }
+  .header-content {
+    padding: 0.7rem;
+  }
+  .card {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .about-section p {
+    font-size: 0.9rem;
+  }
+  .footer {
+    font-size: 0.8rem;
+  }
 }
 
 .github-link img {
@@ -182,6 +280,28 @@ body {
   margin-bottom: 0;
 }
 
+.skills-section.glass,
+.projects-section.glass {
+  /* Center content and limit width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(30,34,54,0.92);
+  border-radius: 22px;
+  box-sizing: border-box;
+  margin: 0 auto 2.5rem auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 900px;
+  width: 100%;
+  border: 2.5px solid #3cffb7; /* For skills */
+  /* For projects, override border in .projects-section.glass below */
+  box-shadow: 0 0 8px 0 #3cffb7;
+}
+.projects-section.glass {
+  border: 2.5px solid #ff5ecb;
+  box-shadow: 0 0 8px 0 #ff5ecb;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
@@ -217,56 +337,26 @@ body {
   text-align: center;
 }
 
-/* Remove duplicate/conflicting .skill-card rules below this line */
-.skill-card:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.22);
-}
-.skill-icon {
-  font-size: clamp(1.5rem, 5vw, 2.2rem);
-  margin-bottom: 0.5rem;
-  filter: drop-shadow(0 2px 8px #0005);
-}
-.skill-card h3 {
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  font-weight: 700;
-  margin: 0.2rem 0 0.7rem 0;
-  color: #e0e6f7;
-}
-.skill-card ul {
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  padding-left: 1.1rem;
-  margin: 0;
-  color: #bfc7d5;
-}
-.skill-card li {
-  margin-bottom: 0.3rem;
-}
-
 .project-card {
-  max-width: 600px; /* Limit project card width */
-  width: 100%;
-  padding: clamp(1rem, 4vw, 1.5rem) clamp(1rem, 4vw, 1.2rem) clamp(1rem, 4vw, 1.2rem) clamp(1rem, 4vw, 1.2rem);
-  margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
   background: linear-gradient(135deg, rgba(40,44,70,0.96) 70%, #7d4a6c 100%);
   border: none;
   border-radius: 18px;
   padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  max-width: 600px;
+  width: 100%;
   margin-bottom: 1.2rem;
   margin-left: auto;
   margin-right: auto;
+  box-sizing: border-box;
 }
-.project-card h3 {
-  font-size: clamp(1.2rem, 4vw, 1.6rem);
-  font-weight: 700;
-  margin-bottom: clamp(0.5rem, 2vw, 0.8rem);
-  color: #fff;
-  text-align: center;
-}
-.project-card p {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  color: #bfc7d5;
-  text-align: center;
+
+/* Center projects grid */
+.projects-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
@@ -282,64 +372,6 @@ body {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media (max-width: 700px) {
-  .main-header {
-    margin-top: clamp(10px, 4vw, 18px);
-    margin-bottom: clamp(10px, 4vw, 18px);
-  }
-  .header-content {
-    max-width: 98vw;
-    width: 98vw;
-    border-radius: 18px;
-    padding: clamp(1rem, 5vw, 1.2rem);
-  }
-  .card {
-    padding: clamp(0.7rem, 4vw, 1.2rem);
-    max-width: 99vw;
-  }
-  .skills-section.glass,
-  .projects-section.glass {
-    max-width: 100vw;
-    width: 100vw;
-    padding: clamp(1rem, 6vw, 1.5rem) clamp(0.5rem, 6vw, 1rem);
-    margin: 0 auto clamp(1rem, 4vw, 1.5rem) auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .skills-grid {
-    max-width: 100vw;
-    width: 100vw;
-    padding: 0 clamp(0.5rem, 4vw, 1rem);
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .skill-card,
-  .project-card {
-    max-width: 98vw;
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 500px) {
-  .site-title {
-    font-size: clamp(1.5rem, 8vw, 2rem);
-  }
-  .about-section h2,
-  .skills-section h2,
-  .projects-section h2 {
-    font-size: clamp(1rem, 7vw, 1.5rem);
-  }
-  .header-content {
-    padding: clamp(0.7rem, 6vw, 1rem);
-  }
-  .card {
-    padding: clamp(0.5rem, 6vw, 1rem);
-  }
 }
 
 /* --- Card Accent Colors --- */
@@ -359,7 +391,7 @@ body {
   box-shadow: 0 0 8px 0 #3cffb7;
   border-radius: 22px;
   padding: 2.5rem 2rem 2rem 2rem;
-  max-width: 900px; /* Reduce max width for desktop */
+  max-width: 900px;
   width: 100%;
   box-sizing: border-box;
   margin: 0 auto 2.5rem auto;
@@ -387,31 +419,10 @@ body {
   padding: 1.5rem 1.2rem 1.2rem 1.2rem;
   margin-bottom: 1.2rem;
 }
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto 2.5rem auto;
-}
-.projects-section.glass {
-  background: rgba(30,34,54,0.92);
-  border: 2.5px solid #ff5ecb;
-  box-shadow: 0 0 8px 0 #ff5ecb;
-  border-radius: 22px;
-  padding: 2.5rem 2rem 2rem 2rem;
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto 2.5rem auto;
-}
 
-.skill-card {
-  background: linear-gradient(135deg, rgba(40,44,70,0.96) 75%, rgba(0,255,153,0.25) 100%);
-  border: 1.5px solid #ffb347;
-  box-shadow: none;
-}
-.project-card {
-  background: linear-gradient(135deg, rgba(40,44,70,0.96) 70%, #7d4a6c 100%);
-  border: none;
-  border-radius: 18px;
-  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
-  margin-bottom: 1.2rem;
+/* Adjust skills grid for single card scrolling */
+.skills-grid {
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
