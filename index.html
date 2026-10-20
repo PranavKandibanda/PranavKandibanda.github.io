@@ -1,609 +1,183 @@
-<!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Pranav Kandibanda | Portfolio</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="static/favicon_io/apple-touch-icon.png"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="static/favicon_io/favicon-32x32.png"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="static/favicon_io/favicon-16x16.png"/>
-  <link rel="shortcut icon" href="static/favicon_io/favicon.ico"/>
-  <link rel="manifest" href="static/favicon_io/site.webmanifest"/>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "bg-deep": "rgb(var(--bg-deep) / <alpha-value>)",
-            "bg-panel": "rgb(var(--bg-panel) / <alpha-value>)",
-            "bg-soft": "rgb(var(--bg-soft) / <alpha-value>)",
-            "brand": "rgb(var(--brand) / <alpha-value>)",
-            "brand-2": "rgb(var(--brand-2) / <alpha-value>)",
-            "mint": "rgb(var(--mint) / <alpha-value>)",
-            "sun": "rgb(var(--sun) / <alpha-value>)",
-            "text-main": "rgb(var(--text-main) / <alpha-value>)",
-            "text-muted": "rgb(var(--text-muted) / <alpha-value>)",
-            "stroke": "rgb(var(--stroke) / <alpha-value>)"
-          },
-          fontFamily: {
-            headline: ["Plus Jakarta Sans", "sans-serif"],
-            body: ["Space Grotesk", "sans-serif"]
-          },
-          boxShadow: {
-            aura: "0 0 0 1px rgba(96,165,250,0.25), 0 30px 80px rgba(56,189,248,0.18)",
-            soft: "0 16px 38px rgba(2, 8, 24, 0.45)"
-          },
-          keyframes: {
-            float: {
-              "0%, 100%": { transform: "translateY(0px)" },
-              "50%": { transform: "translateY(-12px)" }
-            },
-            reveal: {
-              "0%": { opacity: "0", transform: "translateY(16px)" },
-              "100%": { opacity: "1", transform: "translateY(0)" }
-            }
-          },
-          animation: {
-            float: "float 6s ease-in-out infinite",
-            reveal: "reveal 700ms ease-out forwards"
-          }
-        }
-      }
-    };
-  </script>
-  <script>
-    // Apply theme before paint: saved preference first, otherwise system default.
-    (function () {
-      const savedTheme = localStorage.getItem("theme");
-      const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const useDark = savedTheme === "dark" || (savedTheme === null && systemPrefersDark);
-      document.documentElement.classList.toggle("dark", useDark);
-    })();
-  </script>
-  <style>
-    :root {
-      --bg-deep: 244 248 255;
-      --bg-panel: 225 236 252;
-      --bg-soft: 207 223 246;
-      --brand: 37 99 235;
-      --brand-2: 2 132 199;
-      --mint: 13 148 136;
-      --sun: 217 119 6;
-      --text-main: 15 23 42;
-      --text-muted: 71 85 105;
-      --stroke: 147 197 253;
-      --panel-start: 255 255 255;
-      --panel-end: 241 247 255;
-      --panel-edge: 186 214 255;
-      --panel-shadow: 37 99 235;
-    }
-
-    html.dark {
-      --bg-deep: 10 17 31;
-      --bg-panel: 17 29 53;
-      --bg-soft: 22 39 68;
-      --brand: 96 165 250;
-      --brand-2: 56 189 248;
-      --mint: 45 212 191;
-      --sun: 251 191 36;
-      --text-main: 226 236 255;
-      --text-muted: 159 179 217;
-      --stroke: 43 65 104;
-      --panel-start: 22 39 68;
-      --panel-end: 17 29 53;
-      --panel-edge: 63 95 148;
-      --panel-shadow: 2 8 24;
-    }
-
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
-      vertical-align: middle;
-    }
-
-    .panel-glass {
-      background: linear-gradient(
-        145deg,
-        rgb(var(--panel-start) / 0.88),
-        rgb(var(--panel-end) / 0.93)
-      );
-      border-color: rgb(var(--panel-edge) / 0.45);
-      box-shadow: 0 16px 34px rgb(var(--panel-shadow) / 0.16);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .hero-bg {
-      background:
-        radial-gradient(700px 300px at 80% 10%, rgba(56, 189, 248, 0.16), transparent 70%),
-        radial-gradient(500px 260px at 15% 75%, rgba(251, 191, 36, 0.14), transparent 65%),
-        linear-gradient(180deg, #091020 0%, #0a111f 60%, #091120 100%);
-    }
-
-    .noise::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0.06;
-      pointer-events: none;
-      background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0);
-      background-size: 22px 22px;
-    }
-
-    .section-enter {
-      opacity: 0;
-      animation-delay: var(--delay, 0ms);
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111e25">
+  <meta name="description" content="Pranav Kandibanda is an aspiring electrical engineer building robotics, embedded systems, and tools for better decisions.">
+  <title>Pranav Kandibanda — Robotics & Electrical Engineering</title>
+  <link rel="icon" type="image/svg+xml" href="static/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/index.css">
+  <script defer src="static/index.js"></script>
 </head>
-<body class="bg-bg-deep text-text-main font-body selection:bg-brand/30 antialiased">
-  <div class="relative min-h-screen noise">
-    <nav class="fixed top-0 inset-x-0 z-50 border-b border-stroke/50 bg-bg-deep/75 backdrop-blur-xl">
-      <div class="mx-auto max-w-7xl px-6 md:px-8">
-        <div class="flex h-16 items-center justify-between">
-          <a class="font-headline text-2xl font-extrabold tracking-tighter text-brand" href="#home">PK.</a>
-          <button aria-label="Toggle menu" class="md:hidden rounded-full p-2 text-text-muted hover:bg-white/5" id="menuButton" type="button">
-            <span class="material-symbols-outlined">menu</span>
-          </button>
-          <div class="hidden items-center gap-8 md:flex" id="desktopNav">
-            <a class="nav-link border-b-2 border-brand pb-1 font-headline font-bold tracking-tight text-brand" href="#about">About</a>
-            <a class="nav-link font-headline font-bold tracking-tight text-text-muted transition-colors hover:text-brand" href="#skills">Skills</a>
-            <a class="nav-link font-headline font-bold tracking-tight text-text-muted transition-colors hover:text-brand" href="#projects">Projects</a>
-            <a class="nav-link font-headline font-bold tracking-tight text-text-muted transition-colors hover:text-brand" href="#awards">Awards</a>
-            <a class="nav-link font-headline font-bold tracking-tight text-text-muted transition-colors hover:text-brand" href="#contact">Contact</a>
-            <button aria-label="Toggle theme" class="rounded-full p-2 text-text-muted transition-all hover:bg-white/5" id="themeButton" type="button">
-              <span class="material-symbols-outlined" id="themeIcon">dark_mode</span>
-            </button>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="header-inner page-gutter">
+      <a class="wordmark" href="#top" aria-label="Pranav Kandibanda, back to top">PRANAV<span class="wordmark-mark">/</span>K.</a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#recognition">Recognition</a>
+        <a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-inner page-gutter">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow"><span class="accent-line"></span> PORTFOLIO / ENGINEERING</p>
+          <h1 id="hero-title">Pranav<br><span>Kandibanda<span class="accent-dot">.</span></span></h1>
+          <p class="hero-focus">Engineering systems that <em>move, sense, and decide.</em></p>
+          <p class="hero-intro">Aspiring electrical engineer focused on robotics, embedded systems, and autonomous navigation.</p>
+          <div class="hero-actions">
+            <a class="button button-light" href="#work">Explore selected work <span aria-hidden="true">↘</span></a>
+            <a class="text-link hero-github" href="https://github.com/PranavKandibanda" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-        <div class="hidden border-t border-stroke/50 py-4 md:hidden" id="mobileNav">
-          <div class="flex flex-col gap-3">
-            <a class="nav-link rounded-lg px-3 py-2 text-text-main hover:bg-white/5" href="#about">About</a>
-            <a class="nav-link rounded-lg px-3 py-2 text-text-main hover:bg-white/5" href="#skills">Skills</a>
-            <a class="nav-link rounded-lg px-3 py-2 text-text-main hover:bg-white/5" href="#projects">Projects</a>
-            <a class="nav-link rounded-lg px-3 py-2 text-text-main hover:bg-white/5" href="#awards">Awards</a>
-            <a class="nav-link rounded-lg px-3 py-2 text-text-main hover:bg-white/5" href="#contact">Contact</a>
-            <button class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-text-main hover:bg-white/5" id="themeButtonMobile" type="button">
-              <span class="material-symbols-outlined">light_mode</span>
-              Toggle Theme
-            </button>
+        <figure class="hero-visual">
+          <div class="hero-visual-frame">
+            <img src="static/arm-study.svg" width="840" height="840" alt="Technical line illustration of a four-axis robotic arm with servo joints and a gripper">
+          </div>
+          <figcaption><span>FIG. 01 / ROBOTIC ARM</span><span>DESIGN STUDY — 4 AXES</span></figcaption>
+        </figure>
+      </div>
+      <div class="hero-footer page-gutter">
+        <p>LAKE TRAVIS HIGH SCHOOL <span class="hero-footer-separator">/</span> CLASS OF 2027</p>
+        <a href="#work">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="work-section section-pad" id="work" aria-labelledby="work-title">
+      <div class="section-shell page-gutter">
+        <div class="section-heading reveal">
+          <p class="eyebrow section-index">01 / SELECTED WORK</p>
+          <div class="section-heading-main">
+            <h2 id="work-title">Built to work<br><em>in the real world.</em></h2>
+            <p>From electromechanical prototypes to competition data and community tools, each project starts with a practical problem.</p>
+          </div>
+        </div>
+
+        <article class="feature-project reveal" aria-labelledby="arm-title">
+          <div class="project-media arm-media">
+            <div class="project-media-top"><span>01 / ELECTROMECHANICAL SYSTEM</span><span>PROTOTYPE</span></div>
+            <img src="static/arm-study.svg" width="840" height="840" alt="Line study showing the base, articulated links, and gripper of a robotic arm" loading="lazy">
+            <div class="project-media-bottom"><span>MG996R SERVOS</span><span>ARDUINO MEGA 2560</span></div>
+          </div>
+          <div class="project-copy">
+            <p class="eyebrow">FEATURED PROJECT / ROBOTICS</p>
+            <h3 id="arm-title">Robotic arm<span class="title-accent">.</span></h3>
+            <p class="project-lede">A four-axis servo arm designed, built, and controlled through a web portal.</p>
+            <p class="project-body">Over a 24-week build cycle, I worked through the mechanical assembly, MG996R servo control, Arduino MEGA 2560 integration, and remote operation. I also documented the build so others can replicate it.</p>
+            <dl class="project-facts">
+              <div><dt>Architecture</dt><dd>4-axis / servo driven</dd></div>
+              <div><dt>Interface</dt><dd>Remote web control</dd></div>
+              <div><dt>Current focus</dt><dd>Robotic Arm V2</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="feature-project feature-project-reverse reveal" aria-labelledby="vex-title">
+          <div class="project-media vex-media" role="img" aria-label="Conceptual visualization of VexGoat team rankings and performance data">
+            <div class="project-media-top"><span>02 / COMPETITION INTELLIGENCE</span><span>VRC + VEXU</span></div>
+            <div class="vex-graphic" aria-hidden="true">
+              <div class="vex-graphic-head"><span>VEX<span>GOAT</span></span><small>ILLUSTRATIVE DATA VIEW</small></div>
+              <div class="vex-graph"><span class="graph-label">PERFORMANCE INDEX</span><div class="graph-line"></div><div class="graph-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+              <div class="vex-graphic-foot"><span>GOAT SCORING</span><span>TEAM LOOKUP</span></div>
+            </div>
+            <div class="project-media-bottom"><span>RANKINGS</span><span>SCOUTING DATA</span></div>
+          </div>
+          <div class="project-copy">
+            <p class="eyebrow">FEATURED PROJECT / DATA + ROBOTICS</p>
+            <h3 id="vex-title">VexGoat<span class="title-accent">.</span></h3>
+            <p class="project-lede">Turning scattered competition results into useful scouting decisions.</p>
+            <p class="project-body">VexGoat is a VEX Robotics analytics platform for VRC and VEXU teams. It combines event results into rankings, team histories, comparisons, and scouting insights for alliance selection and match preparation.</p>
+            <dl class="project-facts">
+              <div><dt>GOAT scoring</dt><dd>Wins, placements, consistency</dd></div>
+              <div><dt>Team lookup</dt><dd>Stats, history, trends</dd></div>
+            </dl>
+            <a class="project-link" href="https://vexgoat.vercel.app/" target="_blank" rel="noopener noreferrer">Explore VexGoat <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+
+        <div class="more-work reveal">
+          <div class="more-work-heading"><p class="eyebrow">MORE PROJECTS / 03—05</p><h3>Other work</h3></div>
+          <div class="project-list">
+            <article class="project-row">
+              <span class="row-number">03</span>
+              <div><h4>Hourlytic</h4><p>Automated volunteer-hour collection across organizations, reducing paper-based validation for school administrators and exploring predictive member engagement.</p></div>
+              <span class="row-tag">AUTOMATION</span>
+            </article>
+            <article class="project-row">
+              <span class="row-number">04</span>
+              <div><h4>VTSeva website revamp</h4><p>As Website Director, improved the nonprofit’s navigation, accessibility, content organization, and performance for visitors and branch teams.</p></div>
+              <span class="row-tag">WEB / SERVICE</span>
+            </article>
+            <article class="project-row">
+              <span class="row-number">05</span>
+              <div><h4>Python tutoring for impact</h4><p>Designed and taught summer Python sessions; around 80 tutoring hours raised $3,000 to support education for six visually impaired students.</p></div>
+              <span class="row-tag">EDUCATION</span>
+            </article>
           </div>
         </div>
       </div>
-    </nav>
+    </section>
 
-    <main class="pt-16" id="home">
-      <section class="hero-bg relative overflow-hidden px-6 py-24 md:px-8 md:py-32">
-        <div class="absolute right-8 top-28 hidden w-44 min-h-28 animate-float rounded-3xl border border-brand/30 bg-brand/10 p-4 text-brand shadow-aura lg:block">
-          <p class="text-sm font-semibold">Current Focus</p>
-          <p class="mt-2 text-[11px] leading-5 text-text-muted">
-            <span class="block">Designing &amp; Prototyping</span>
-            <span class="block">Robotic Arm V2</span>
-          </p>
+    <section class="about-section section-pad" id="about" aria-labelledby="about-title">
+      <div class="section-shell page-gutter about-layout">
+        <div class="about-intro reveal">
+          <p class="eyebrow section-index">02 / ABOUT & CAPABILITIES</p>
+          <h2 id="about-title">Curiosity, with<br><em>follow-through.</em></h2>
+          <p>I’m a high school student pursuing electrical and computer engineering. My work spans robotics, software, cybersecurity, and applied AI/ML, with a growing interest in autonomous systems.</p>
+          <p>Outside the build, I lead and teach: from VEX Robotics and CyberPatriot to SkillsUSA and VTSeva.</p>
         </div>
-        <div class="mx-auto max-w-5xl text-center section-enter animate-reveal" style="--delay: 50ms;">
-          <span class="inline-flex items-center rounded-full border border-brand/40 bg-brand/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-2">
-            Lake Travis High School | Class of 2027
-          </span>
-          <h1 class="mt-7 font-headline text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-8xl">
-            Building with Curiosity, <span class="bg-gradient-to-r from-brand to-mint bg-clip-text text-transparent">Leading with Purpose.</span>
-          </h1>
-          <p class="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-text-muted md:text-2xl">
-            I am Pranav Kandibanda, an aspiring Electrical and Computer Engineering student building robotics, automation tools, and community-focused tech projects.
-          </p>
-          <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a class="inline-flex items-center gap-3 rounded-full bg-gradient-to-br from-brand to-brand-2 px-8 py-4 font-bold text-slate-900 transition-all duration-300 hover:scale-105" href="https://github.com/PranavKandibanda" rel="noreferrer" target="_blank">
-              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
-              Explore My GitHub
-            </a>
-            <a class="inline-flex items-center gap-3 rounded-full border border-stroke bg-bg-panel/70 px-8 py-4 font-bold transition-colors hover:bg-bg-soft" href="#projects">
-              See My Projects
-              <span class="material-symbols-outlined">arrow_forward</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="mx-auto max-w-7xl px-6 py-24 md:px-8" id="about">
-        <div class="grid gap-10 lg:grid-cols-12 lg:items-center">
-          <div class="lg:col-span-5 section-enter animate-reveal" style="--delay: 100ms;">
-            <div class="panel-glass relative overflow-hidden rounded-3xl border border-stroke p-3 shadow-soft">
-              <img alt="Pranav Kandibanda" class="h-[430px] w-full rounded-2xl object-cover" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80"/>
-              <div class="absolute inset-0 bg-gradient-to-t from-bg-deep/70 via-transparent"></div>
-              <div class="absolute bottom-4 left-4 right-4 rounded-2xl border border-stroke/70 bg-bg-panel/85 p-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-text-muted">Guiding Idea</p>
-                <p class="mt-1 font-semibold">Technology should solve real problems and lift real people.</p>
-              </div>
-            </div>
-          </div>
-          <div class="space-y-8 lg:col-span-7 section-enter animate-reveal" style="--delay: 180ms;">
-            <div>
-              <p class="font-semibold uppercase tracking-[0.18em] text-brand-2">About Me</p>
-              <h2 class="mt-3 font-headline text-4xl font-bold tracking-tight md:text-5xl">Engineer in Training, Leader in Action</h2>
-            </div>
-            <div class="panel-glass rounded-3xl border border-stroke p-8 shadow-soft">
-              <p class="text-lg leading-relaxed text-text-muted">
-                I am currently a high school student focused on Electrical and Computer Engineering pathways, with hands-on work spanning robotics, software, cybersecurity, and applied AI/ML.
-              </p>
-              <p class="mt-5 text-lg leading-relaxed text-text-muted">
-                Across VEX Robotics, CyberPatriot, SkillsUSA, and VTSeva, I have led teams, mentored new members, and delivered projects that combine technical depth with measurable impact for my school and community.
-              </p>
-            </div>
-            <div class="grid gap-4 sm:grid-cols-3">
-              <div class="rounded-2xl border border-stroke bg-bg-panel/80 p-5 text-center">
-                <p class="text-3xl font-extrabold text-sun">$3,000</p>
-                <p class="mt-1 text-sm text-text-muted">Donations Raised Through Tutoring</p>
-              </div>
-              <div class="rounded-2xl border border-stroke bg-bg-panel/80 p-5 text-center">
-                <p class="text-3xl font-extrabold text-mint">Top 150</p>
-                <p class="mt-1 text-sm text-text-muted">CyberPatriot Team Ranking (US)</p>
-              </div>
-              <div class="rounded-2xl border border-stroke bg-bg-panel/80 p-5 text-center">
-                <p class="text-3xl font-extrabold text-brand-2">100+</p>
-                <p class="mt-1 text-sm text-text-muted">Volunteer Hours (PVSA)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="border-y border-stroke/60 bg-bg-panel/35 px-6 py-24 md:px-8" id="skills">
-        <div class="mx-auto max-w-7xl">
-          <div class="mb-12 section-enter animate-reveal" style="--delay: 100ms;">
-            <p class="font-semibold uppercase tracking-[0.18em] text-mint">Core Competencies</p>
-            <h2 class="mt-3 font-headline text-4xl font-bold tracking-tight md:text-5xl">Skills Built Through Real Work</h2>
-          </div>
-          <div class="grid gap-8 md:grid-cols-2">
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-8 shadow-soft" style="--delay: 140ms;">
-              <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand/15 text-brand">
-                <span class="material-symbols-outlined text-3xl">functions</span>
-              </div>
-              <h3 class="font-headline text-3xl font-bold">Mathematics</h3>
-              <p class="mt-4 leading-relaxed text-text-muted">Advanced coursework and sustained practice in quantitative reasoning, applied statistics, and STEM problem solving.</p>
-              <div class="mt-6 space-y-3">
-                <div>
-                  <div class="mb-1 flex justify-between text-sm"><span>Calculus</span><span class="text-text-muted">Advanced</span></div>
-                  <div class="h-2 rounded-full bg-bg-soft"><div class="h-full w-[92%] rounded-full bg-gradient-to-r from-brand to-brand-2"></div></div>
-                </div>
-                <div>
-                  <div class="mb-1 flex justify-between text-sm"><span>Applied Statistics</span><span class="text-text-muted">Advanced</span></div>
-                  <div class="h-2 rounded-full bg-bg-soft"><div class="h-full w-[88%] rounded-full bg-gradient-to-r from-brand-2 to-mint"></div></div>
-                </div>
-              </div>
-            </article>
-
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-8 shadow-soft" style="--delay: 200ms;">
-              <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-mint/15 text-mint">
-                <span class="material-symbols-outlined text-3xl">code</span>
-              </div>
-              <h3 class="font-headline text-3xl font-bold">Software Development</h3>
-              <p class="mt-4 leading-relaxed text-text-muted">Built full projects across web development, automation, and competition systems with a focus on maintainable architecture.</p>
-              <div class="mt-6 flex flex-wrap gap-2">
-                <span class="rounded-full border border-stroke bg-bg-soft px-3 py-1 text-xs">Python</span>
-                <span class="rounded-full border border-stroke bg-bg-soft px-3 py-1 text-xs">JavaScript</span>
-                <span class="rounded-full border border-stroke bg-bg-soft px-3 py-1 text-xs">C++</span>
-                <span class="rounded-full border border-stroke bg-bg-soft px-3 py-1 text-xs">HTML/CSS</span>
-                <span class="rounded-full border border-stroke bg-bg-soft px-3 py-1 text-xs">Arduino</span>
-                <span class="rounded-full border border-stroke bg-bg-soft px-3 py-1 text-xs">Git</span>
-              </div>
-            </article>
-
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-8 shadow-soft" style="--delay: 240ms;">
-              <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sun/15 text-sun">
-                <span class="material-symbols-outlined text-3xl">gpp_good</span>
-              </div>
-              <h3 class="font-headline text-3xl font-bold">Cybersecurity</h3>
-              <p class="mt-4 leading-relaxed text-text-muted">Competition-tested defensive security skills built through CyberPatriot rounds, training, and real-time troubleshooting leadership.</p>
-              <ul class="mt-6 space-y-2 text-text-muted">
-                <li>- Led team execution as Windows Captain during timed competition rounds.</li>
-                <li>- Designed practice rounds and interactive lesson sessions for new members.</li>
-                <li>- Drove debugging under pressure to maximize scoring outcomes.</li>
-              </ul>
-            </article>
-
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-8 shadow-soft" style="--delay: 300ms;">
-              <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-2/15 text-brand-2">
-                <span class="material-symbols-outlined text-3xl">groups</span>
-              </div>
-              <h3 class="font-headline text-3xl font-bold">Leadership</h3>
-              <p class="mt-4 leading-relaxed text-text-muted">Experienced in mentoring teams, running chapter operations, and coordinating cross-functional student initiatives.</p>
-              <ul class="mt-6 space-y-2 text-text-muted">
-                <li>- Scaled CyberPatriot by onboarding and training 30 freshmen.</li>
-                <li>- SkillsUSA officer coaching 30 STEM competitors and organizing events.</li>
-                <li>- VTSeva Website Director aligning site updates with global branches.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="mx-auto max-w-7xl px-6 py-24 md:px-8" id="projects">
-        <div class="mb-12 section-enter animate-reveal" style="--delay: 100ms;">
-          <p class="font-semibold uppercase tracking-[0.18em] text-sun">Project Highlights</p>
-          <h2 class="mt-3 font-headline text-4xl font-bold tracking-tight md:text-5xl">From Ideas to Impact</h2>
-        </div>
-
-        <div class="grid gap-8 lg:grid-cols-3">
-          <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft lg:col-span-2" style="--delay: 140ms;">
-            <div class="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-mint">
-              <span class="inline-block h-2 w-2 rounded-full bg-mint"></span>
-              Featured Initiative
-            </div>
-            <h3 class="mt-4 font-headline text-3xl font-bold">Robotic Arm + Remote Control Portal</h3>
-            <p class="mt-4 leading-relaxed text-text-muted">Designed and built a 4-axis robotic arm using MG996R servos and Arduino MEGA 2560, then created a web portal for remote control and clear replication documentation.</p>
-            <div class="mt-6 grid gap-4 sm:grid-cols-3">
-              <div class="rounded-xl border border-stroke bg-bg-soft/60 p-4">
-                <p class="text-2xl font-bold text-sun">4-Axis</p>
-                <p class="text-sm text-text-muted">Servo Arm Design</p>
-              </div>
-              <div class="rounded-xl border border-stroke bg-bg-soft/60 p-4">
-                <p class="text-2xl font-bold text-brand">24 Weeks</p>
-                <p class="text-sm text-text-muted">Sustained Build Cycle</p>
-              </div>
-              <div class="rounded-xl border border-stroke bg-bg-soft/60 p-4">
-                <p class="text-2xl font-bold text-mint">Web Enabled</p>
-                <p class="text-sm text-text-muted">Remote Operation</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft" style="--delay: 180ms;">
-            <h3 class="font-headline text-2xl font-bold">Hourlytic</h3>
-            <p class="mt-4 text-text-muted">Built a system to automate volunteer-hour collection and reduce manual, paper-based validation for school administrators.</p>
-            <ul class="mt-5 space-y-2 text-sm text-text-muted">
-              <li>- Unified hour tracking from multiple organizations.</li>
-              <li>- Improved validation accuracy and processing speed.</li>
-              <li>- Applied predictive ideas for member engagement.</li>
-            </ul>
-          </article>
-
-          <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft" style="--delay: 220ms;">
-            <h3 class="font-headline text-2xl font-bold">VTSeva Website Revamp</h3>
-            <p class="mt-4 text-text-muted">Modernized non-profit web presence with better accessibility, cleaner navigation, and faster page organization for visitors and branch teams.</p>
-            <p class="mt-5 text-sm text-text-muted">Role: Website Director | Focus: UX, content accuracy, performance</p>
-          </article>
-
-          <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft" style="--delay: 260ms;">
-            <h3 class="font-headline text-2xl font-bold">Python Tutoring for Impact</h3>
-            <p class="mt-4 text-text-muted">Planned and taught summer Python programs to fund education for visually impaired students through targeted, high-engagement sessions.</p>
-            <p class="mt-5 text-sm text-text-muted">Outcome: $3,000 raised, 6 students funded, ~80 tutoring hours</p>
-          </article>
-
-          <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft lg:col-span-3" style="--delay: 300ms;">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <div class="inline-flex items-center gap-2 rounded-full border border-stroke bg-bg-soft/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-brand-2">
-                <span class="material-symbols-outlined text-base">insights</span>
-                Featured Analytics Build
-              </div>
-              <a class="inline-flex items-center gap-2 rounded-full border border-brand/50 bg-brand/10 px-4 py-2 text-sm font-semibold text-brand-2 transition-colors hover:bg-brand/20" href="https://vexgoat.vercel.app/" rel="noreferrer" target="_blank">
-                Visit VexGoat
-                <span class="material-symbols-outlined text-base">open_in_new</span>
-              </a>
-            </div>
-            <h3 class="mt-5 font-headline text-3xl font-bold">VexGoat</h3>
-            <p class="mt-4 text-text-muted">VexGoat is a VEX Robotics analytics platform for VRC and VEXU teams that identifies top performers using competition data. It transforms scattered results into rankings, comparisons, and practical scouting insights so teams can make faster, smarter strategy decisions.</p>
-            <div class="mt-6 grid gap-4 md:grid-cols-3">
-              <div class="rounded-xl border border-stroke bg-bg-soft/60 p-4">
-                <p class="text-sm font-semibold text-text-main">GOAT Scoring</p>
-                <p class="mt-1 text-sm text-text-muted">Ranks teams by wins, placements, and consistency across events.</p>
-              </div>
-              <div class="rounded-xl border border-stroke bg-bg-soft/60 p-4">
-                <p class="text-sm font-semibold text-text-main">Team Lookup</p>
-                <p class="mt-1 text-sm text-text-muted">Search teams like 654X to view stats, history, and trends.</p>
-              </div>
-              <div class="rounded-xl border border-stroke bg-bg-soft/60 p-4">
-                <p class="text-sm font-semibold text-text-main">Scouting Intelligence</p>
-                <p class="mt-1 text-sm text-text-muted">Supports alliance selection, matchup prep, and performance tracking.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="border-t border-stroke/60 bg-bg-panel/35 px-6 py-24 md:px-8" id="awards">
-        <div class="mx-auto max-w-7xl">
-          <div class="mb-12 section-enter animate-reveal" style="--delay: 100ms;">
-            <p class="font-semibold uppercase tracking-[0.18em] text-brand-2">Awards & Recognition</p>
-            <h2 class="mt-3 font-headline text-4xl font-bold tracking-tight md:text-5xl">Milestones That Mark the Journey</h2>
-          </div>
-
-          <div class="grid gap-6 md:grid-cols-2">
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft" style="--delay: 140ms;">
-              <div class="inline-flex items-center gap-2 rounded-full border border-stroke bg-bg-soft/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-sun">
-                <span class="material-symbols-outlined text-base">emoji_events</span>
-                Robotics
-              </div>
-              <h3 class="mt-4 font-headline text-2xl font-bold">VEX Tournament Champion</h3>
-              <p class="mt-3 text-text-muted">Ranked as first-place alliance at a local VEX Robotics tournament through coordinated driver control and code strategy.</p>
-            </article>
-
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft" style="--delay: 180ms;">
-              <div class="inline-flex items-center gap-2 rounded-full border border-stroke bg-bg-soft/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-mint">
-                <span class="material-symbols-outlined text-base">shield</span>
-                Cybersecurity
-              </div>
-              <h3 class="mt-4 font-headline text-2xl font-bold">CyberPatriot Platinum Semifinalist</h3>
-              <p class="mt-3 text-text-muted">Finished among the top 150 teams in the nation in CyberPatriot, a competitive cybersecurity defense challenge.</p>
-            </article>
-
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft" style="--delay: 220ms;">
-              <div class="inline-flex items-center gap-2 rounded-full border border-stroke bg-bg-soft/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-brand">
-                <span class="material-symbols-outlined text-base">code</span>
-                Programming
-              </div>
-              <h3 class="mt-4 font-headline text-2xl font-bold">SkillsUSA Computer Programming</h3>
-              <p class="mt-3 text-text-muted">Ranked 2nd in region for Computer Programming, advancing technical depth in algorithmic thinking and software design.</p>
-            </article>
-
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft" style="--delay: 260ms;">
-              <div class="inline-flex items-center gap-2 rounded-full border border-stroke bg-bg-soft/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-brand-2">
-                <span class="material-symbols-outlined text-base">groups</span>
-                Leadership
-              </div>
-              <h3 class="mt-4 font-headline text-2xl font-bold">DECA District Champion</h3>
-              <p class="mt-3 text-text-muted">Won district in Hospitality and Tourism and advanced to state competition, showcasing business communication and presentation skills.</p>
-            </article>
-
-            <article class="panel-glass section-enter animate-reveal rounded-3xl border border-stroke p-7 shadow-soft md:col-span-2" style="--delay: 300ms;">
-              <div class="inline-flex items-center gap-2 rounded-full border border-stroke bg-bg-soft/70 px-3 py-1 text-xs uppercase tracking-[0.18em] text-sun">
-                <span class="material-symbols-outlined text-base">workspace_premium</span>
-                Service & Academics
-              </div>
-              <h3 class="mt-4 font-headline text-2xl font-bold">PVSA + AP Scholar with Distinction</h3>
-              <p class="mt-3 text-text-muted">Earned the Presidential Volunteering Service Award for 100+ hours of impact work and AP Scholar with Distinction with a 4.0 GPA and 6 AP STEM classes.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="border-t border-stroke/60 bg-gradient-to-b from-bg-deep to-[#0c1730] px-6 py-24 md:px-8" id="contact">
-        <div class="mx-auto max-w-6xl section-enter animate-reveal" style="--delay: 120ms;">
-          <div class="text-center">
-            <p class="font-semibold uppercase tracking-[0.18em] text-brand-2">Contact</p>
-            <h2 class="mt-3 font-headline text-4xl font-extrabold tracking-tight md:text-6xl">Let us build something meaningful.</h2>
-            <p class="mx-auto mt-6 max-w-2xl text-lg text-text-muted">I am open to student research opportunities, ECE-focused builds, and collaborative projects in robotics, software, and AI/ML.</p>
-          </div>
-
-          <div class="mt-12 grid gap-8 lg:grid-cols-5">
-            <div class="panel-glass rounded-3xl border border-stroke p-7 shadow-soft lg:col-span-2">
-              <h3 class="font-headline text-2xl font-bold">Reach Out</h3>
-              <ul class="mt-6 space-y-4 text-text-muted">
-                <li class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-brand">mail</span>
-                  <a class="hover:text-brand-2" href="mailto:kandibanda.pranav@gmail.com">kandibanda.pranav@gmail.com</a>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-brand">public</span>
-                  <a class="hover:text-brand-2" href="https://github.com/PranavKandibanda" rel="noreferrer" target="_blank">github.com/PranavKandibanda</a>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span class="material-symbols-outlined text-brand">call</span>
-                  737-217-4606
-                </li>
-              </ul>
-            </div>
-
-            <form action="mailto:kandibanda.pranav@gmail.com" class="panel-glass rounded-3xl border border-stroke p-7 shadow-soft lg:col-span-3" enctype="text/plain" method="post">
-              <h3 class="font-headline text-2xl font-bold">Send a Message</h3>
-              <div class="mt-6 grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label class="mb-2 block text-sm text-text-muted" for="name">Name</label>
-                  <input class="w-full rounded-xl border-stroke bg-bg-soft/70 text-text-main placeholder:text-text-muted focus:border-brand focus:ring-brand" id="name" name="name" placeholder="Your name" required type="text"/>
-                </div>
-                <div>
-                  <label class="mb-2 block text-sm text-text-muted" for="email">Email</label>
-                  <input class="w-full rounded-xl border-stroke bg-bg-soft/70 text-text-main placeholder:text-text-muted focus:border-brand focus:ring-brand" id="email" name="email" placeholder="you@example.com" required type="email"/>
-                </div>
-              </div>
-              <div class="mt-4">
-                <label class="mb-2 block text-sm text-text-muted" for="message">Message</label>
-                <textarea class="w-full rounded-xl border-stroke bg-bg-soft/70 text-text-main placeholder:text-text-muted focus:border-brand focus:ring-brand" id="message" name="message" placeholder="Tell me about your idea..." required rows="5"></textarea>
-              </div>
-              <button class="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand to-mint px-7 py-3 font-bold text-slate-900 transition-transform hover:-translate-y-0.5" type="submit">
-                Send Message
-                <span class="material-symbols-outlined">send</span>
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-stroke/50 bg-[#070d1a] py-10">
-      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row md:px-8">
-        <p class="font-headline text-xl font-bold text-brand">PK.</p>
-        <p class="text-sm text-text-muted">© <span id="year"></span> Pranav Kandibanda. Built with intent.</p>
-        <div class="flex items-center gap-5 text-sm text-text-muted">
-          <a class="transition-colors hover:text-brand" href="https://github.com/PranavKandibanda" rel="noreferrer" target="_blank">GitHub</a>
-          <a class="transition-colors hover:text-brand" href="https://www.linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a>
-          <a class="transition-colors hover:text-brand" href="mailto:kandibanda.pranav@gmail.com">Email</a>
+        <div class="capability-list reveal">
+          <div class="capability"><span>01</span><div><h3>Robotics & embedded systems</h3><p>Servo control, Arduino prototyping, electromechanical integration, and iterative testing.</p></div></div>
+          <div class="capability"><span>02</span><div><h3>Software & data</h3><p>Python, JavaScript, C++, HTML/CSS, Git, web tools, analytics, and automation.</p></div></div>
+          <div class="capability"><span>03</span><div><h3>Systems thinking</h3><p>Advanced calculus and statistics, defensive cybersecurity, debugging, and clear documentation.</p></div></div>
+          <div class="capability"><span>04</span><div><h3>Technical leadership</h3><p>Trained 30 CyberPatriot freshmen, coached 30 SkillsUSA STEM competitors, and coordinated VTSeva website work across branches.</p></div></div>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
 
-  <script>
-    const root = document.documentElement;
-    const menuButton = document.getElementById("menuButton");
-    const mobileNav = document.getElementById("mobileNav");
-    const themeButton = document.getElementById("themeButton");
-    const themeButtonMobile = document.getElementById("themeButtonMobile");
-    const themeIcon = document.getElementById("themeIcon");
-    const themeIconMobile = themeButtonMobile?.querySelector(".material-symbols-outlined");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll("section[id]");
+    <section class="recognition-section section-pad" id="recognition" aria-labelledby="recognition-title">
+      <div class="section-shell page-gutter">
+        <div class="section-heading recognition-heading reveal">
+          <p class="eyebrow section-index">03 / RECOGNITION</p>
+          <div class="section-heading-main"><h2 id="recognition-title">The work,<br><em>recognized.</em></h2><p>Competition results, academic discipline, and service are different measures of the same commitment.</p></div>
+        </div>
+        <div class="award-list reveal">
+          <div class="award-row"><span>ROBOTICS</span><h3>VEX Tournament Champion</h3><p>First-place alliance at a local VEX Robotics tournament through coordinated driver control and code strategy.</p></div>
+          <div class="award-row"><span>CYBERSECURITY</span><h3>CyberPatriot Platinum Semifinalist</h3><p>Team finished among the top 150 nationally; I served as Windows Captain and developed practice sessions.</p></div>
+          <div class="award-row"><span>PROGRAMMING</span><h3>SkillsUSA — 2nd in Region</h3><p>Computer Programming competition; also served as a SkillsUSA officer supporting STEM competitors.</p></div>
+          <div class="award-row"><span>LEADERSHIP</span><h3>DECA District Champion</h3><p>Hospitality and Tourism district winner, advancing to state competition.</p></div>
+          <div class="award-row"><span>SERVICE + ACADEMICS</span><h3>PVSA & AP Scholar with Distinction</h3><p>Presidential Volunteer Service Award for 100+ hours; 4.0 GPA and six AP STEM classes.</p></div>
+        </div>
+      </div>
+    </section>
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="section-shell page-gutter contact-inner reveal">
+        <p class="eyebrow">04 / CONTACT</p>
+        <h2 id="contact-title">Let’s make<br><em>something move.</em></h2>
+        <p>Open to research opportunities and collaborative work in robotics, electrical engineering, software, and autonomous systems.</p>
+        <a class="contact-email" href="mailto:kandibanda.pranav@gmail.com">kandibanda.pranav@gmail.com <span aria-hidden="true">↗</span></a>
+        <div class="contact-links"><a href="https://github.com/PranavKandibanda" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="tel:+17372174606">737-217-4606 ↗</a></div>
+      </div>
+    </section>
+  </main>
 
-    const syncThemeIcon = () => {
-      const dark = root.classList.contains("dark");
-      if (themeIcon) {
-        themeIcon.textContent = dark ? "dark_mode" : "light_mode";
-      }
-      if (themeIconMobile) {
-        themeIconMobile.textContent = dark ? "dark_mode" : "light_mode";
-      }
-    };
-
-    const toggleTheme = () => {
-      root.classList.toggle("dark");
-      localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
-      syncThemeIcon();
-    };
-
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === null && window.matchMedia) {
-      const media = window.matchMedia("(prefers-color-scheme: dark)");
-      media.addEventListener("change", (event) => {
-        root.classList.toggle("dark", event.matches);
-        syncThemeIcon();
-      });
-    }
-
-    if (menuButton && mobileNav) {
-      menuButton.addEventListener("click", () => {
-        mobileNav.classList.toggle("hidden");
-      });
-    }
-
-    [themeButton, themeButtonMobile].forEach((button) => {
-      if (button) {
-        button.addEventListener("click", toggleTheme);
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (mobileNav) {
-          mobileNav.classList.add("hidden");
-        }
-      });
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        const id = entry.target.getAttribute("id");
-        navLinks.forEach((link) => {
-          const active = link.getAttribute("href") === `#${id}`;
-          link.classList.toggle("text-brand", active);
-          link.classList.toggle("border-brand", active);
-          link.classList.toggle("border-b-2", active);
-          link.classList.toggle("pb-1", active);
-          if (!active && link.classList.contains("font-headline")) {
-            link.classList.add("text-text-muted");
-          }
-        });
-      });
-    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0.01 });
-
-    sections.forEach((section) => observer.observe(section));
-    syncThemeIcon();
-  </script>
+  <footer class="site-footer page-gutter"><span>© <span id="year">2026</span> PRANAV KANDIBANDA</span><span>DESIGNED TO KEEP BUILDING.</span><a href="#top">BACK TO TOP ↑</a></footer>
 </body>
 </html>

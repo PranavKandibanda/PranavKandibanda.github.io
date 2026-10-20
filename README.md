@@ -1,49 +1,17 @@
-# Pranav Kandibanda Portfolio
+# Pranav Kandibanda — Portfolio
 
-Personal portfolio site for Pranav Kandibanda, featuring projects, leadership, awards, and contact information.
+Personal engineering portfolio featuring robotics, software, competition work, leadership, and service. Published with GitHub Pages at [pranavkandibanda.github.io](https://pranavkandibanda.github.io).
 
-## Live Site
+## Structure
 
-[https://pranavkandibanda.github.io](https://pranavkandibanda.github.io)
+- `index.html` — page content and semantic structure
+- `static/index.css` — design system, layout, typography, and responsive styles
+- `static/index.js` — navigation, reveal motion, and reading progress
+- `static/arm-study.svg` — original technical illustration used for the robotic arm project
+- `static/favicon.svg` — favicon matched to the portfolio palette
 
-## What This Site Includes
+The site is plain HTML, CSS, and JavaScript. No build step is required. Open `index.html` locally to review changes; GitHub Pages serves the same files from the default branch.
 
-- Hero section with quick intro and current focus
-- About section with background and key impact metrics
-- Skills section covering math, software, cybersecurity, and leadership
-- Projects section with featured builds (including VexGoat)
-- Awards and recognition section
-- Contact section with email and social links
-- Responsive navigation and light/dark theme toggle
+## Design notes
 
-## Tech Stack
-
-- HTML5
-- Tailwind CSS (CDN)
-- Vanilla JavaScript
-- Google Fonts + Material Symbols
-- GitHub Pages deployment
-
-## Project Structure
-
-```text
-.
-├── index.html
-├── README.md
-└── static/
-	├── index.css
-	└── favicon_io/
-```
-
-## Deployment
-
-This repository is configured for GitHub Pages.
-
-- Push changes to the default branch
-- GitHub Pages serves the site at:
-	`https://pranavkandibanda.github.io`
-
-## License
-
-This project is for personal portfolio use.
-#
+The visual system uses deep ink, warm off-white, and copper with DM Sans and IBM Plex Mono. Project visuals are illustrations; the VexGoat graphic is explicitly an illustrative data view. Motion respects `prefers-reduced-motion`.
