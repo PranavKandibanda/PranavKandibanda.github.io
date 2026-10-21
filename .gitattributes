@@ -1,0 +1,3 @@
+build-assets/* -diff -text
+fonts/*.woff2 binary
+app/public/fonts/*.woff2 binary

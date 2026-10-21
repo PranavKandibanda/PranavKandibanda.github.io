@@ -1,2 +1,8 @@
 # Personal documents
 PranavKandibanda_Resume.pdf
+Pranav Kandibanda UT Resume.docx.pdf
+
+# Frontend dependencies and temporary output
+node_modules/
+dist/
+.vite/
