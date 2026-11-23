@@ -44,7 +44,7 @@ function Highlights() {
   return <section className="highlights page-shell" aria-label="Selected highlights">
     <span className="section-label">In brief / 2026</span>
     <div>
-      <p><strong>Tournament champion</strong><span>VEX 654X at GHOST’s Halloween Override</span></p>
+      <p><strong>Tournament champions</strong><span>VEX 654X at GHOST and Waskow Override</span></p>
       <p><strong>Navigation research</strong><span>Student researcher at NC State</span></p>
       <p><strong>Simulation engineering</strong><span>Intern at AnthroPilot</span></p>
     </div>

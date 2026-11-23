@@ -23,13 +23,13 @@ export const featuredProjects: Project[] = [
     challenge: 'A route that looks correct on paper can miss its target when wheels slip, the pose estimate drifts, or the robot turns too sharply. Autonomous routines have to work within the time and space of a match.',
     response: 'As programming captain, I lead a three-person team and develop C++/PROS drivetrain code. PKLib combines LemLib-based odometry, 2D geometry, telemetry, and trapezoidal or triangular motion profiles. Monte Carlo localization and distance-sensor corrections are in development.',
     testing: 'Desktop tests help check geometry and motion profiles before field runs. Telemetry and competition practice expose differences between commanded and observed movement.',
-    result: 'Team 654X finished eighth at the Texas State Championship and won the GHOST Halloween Override tournament at UT Austin on October 31, 2026, with alliance partner 654J.',
+    result: 'Team 654X won Tournament Champion awards at both GHOST’s Halloween Override and the Waskow Override Challenge in 2026.',
     status: 'Implemented: odometry, motion profiles, drivetrain control. In development: Monte Carlo localization and distance-sensor correction.',
     tools: ['C++', 'PROS', 'LemLib', 'Odometry', 'Motion control'],
     links: [
       { label: 'Public team code', href: 'https://github.com/PranavKandibanda/654XOverRide' },
-      { label: 'Competition results', href: 'https://vantage-scout.app/event/VE-V5-26-65564' },
-      { label: 'Official event listing', href: 'https://events.vex.com/robot-competitions/vex-robotics-competition/VE-V5-26-65564.html' },
+      { label: 'GHOST awards', href: 'https://events.vex.com/robot-competitions/vex-robotics-competition/VE-V5-26-65564.html#awards' },
+      { label: 'Waskow awards', href: 'https://events.vex.com/robot-competitions/vex-robotics-competition/VE-V5-26-66392.html#awards' },
     ],
   },
   {
@@ -87,8 +87,8 @@ export const experiences = [
 ];
 
 export const recognition = [
-  { title: 'Tournament Champion', context: 'GHOST’s Halloween Override · UT Austin', year: '31 Oct 2026', href: 'https://vantage-scout.app/event/VE-V5-26-65564' },
-  { title: 'Eighth place, Texas State Championship', context: 'VEX Robotics · Team 654X', year: '2026' },
+  { title: 'Tournament Champion', context: 'GHOST’s Halloween Override · UT Austin', year: '31 Oct 2026', href: 'https://events.vex.com/robot-competitions/vex-robotics-competition/VE-V5-26-65564.html#awards' },
+  { title: 'Tournament Champion', context: 'Waskow Override Challenge · Belton', year: '7 Nov 2026', href: 'https://events.vex.com/robot-competitions/vex-robotics-competition/VE-V5-26-66392.html#awards' },
   { title: 'CircuitPython Hackathon Winner', context: 'Cirrus Logic / NI Emerson', year: '2026' },
   { title: 'Platinum Semifinalist', context: 'CyberPatriot', year: '2024 & 2025' },
   { title: 'Second place, Computer Programming', context: 'SkillsUSA Regional Competition', year: '2024 & 2025' },
