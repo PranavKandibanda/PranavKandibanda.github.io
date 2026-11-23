@@ -72,7 +72,7 @@ export const additionalProjects = [
   { title: 'Custom 65-key keyboard', category: 'PCB / product design', period: 'In progress', description: 'A custom RP2040-based keyboard PCB and planned 3D-printed chassis, developed as a hands-on KiCad and electronics project.', href: 'https://github.com/PranavKandibanda/65-Keyboard' },
   { title: 'Robotic arm', category: 'Hardware / CAD', period: '2025', description: 'Servo-driven arm work documented through Fusion CAD, component research, and an ESP32/MG996R repository. An earlier three-axis Arduino Mega prototype informed the work.', href: 'https://blueprint.hackclub.com/projects/1258', image: '/media/arm-cad-1.webp' },
   { title: 'VexGoat', category: 'Robotics software', period: '2025–present', description: 'A VEX scoring and team-comparison website for scouting and competition analysis.', href: 'https://vexgoat.vercel.app/' },
-  { title: 'Hourlytic', category: 'Civic software concept', period: 'Earlier work', description: 'An exploration of simpler volunteer-hour collection and validation for school organizations.', href: '' },
+  { title: 'Hourlytic', category: 'Civic software concept', period: 'Earlier work', description: 'An exploration of simpler volunteer-hour collection and validation for school organizations.', href: 'https://voluntrack-azure.vercel.app/login' },
 ];
 
 export const experiences = [
