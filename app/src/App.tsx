@@ -69,7 +69,7 @@ function ResearchVisual() {
       <circle cx="78" cy="414" r="8" className="route-point" /><circle cx="769" cy="101" r="15" className="route-end" />
       <text x="77" y="452">START POSE</text><text x="699" y="74">GOAL POSE</text><text x="135" y="92">A / CANDIDATE PATH</text><text x="135" y="116">B / ALTERNATE PATH</text>
     </svg>
-    <figcaption><span>Planner comparison method · conceptual diagram</span><span>No measured results shown</span></figcaption>
+    <figcaption><span>Planner comparison method · conceptual diagram</span><span>Illustrative routes</span></figcaption>
   </figure>;
 }
 
@@ -123,7 +123,7 @@ function Projects() {
 }
 
 function Experience() {
-  return <section id="experience" className="experience-section"><div className="page-shell"><SectionTitle label="02 / Research & experience" title="Built with other people." intro="Research, internship work, competition teams, and community organizations have each changed how I approach a technical problem." /><div className="experience-list">{experiences.map(item => <div className="experience-row" key={item.organization}><span className="experience-period">{item.period}</span><div><h3>{item.organization}</h3><span className="experience-role">{item.role}</span><p>{item.detail}</p></div></div>)}</div></div></section>;
+  return <section id="experience" className="experience-section"><div className="page-shell"><SectionTitle label="02 / Research & experience" title="Built with other people." intro="Research, internship work, competition teams, and community organizations have each changed how I approach a technical problem." /><div className="experience-list">{experiences.map(item => <div className="experience-row" key={item.organization}><span className="experience-period">{item.period}</span><div><h3>{item.organization}</h3><span className="experience-role">{item.role}</span><p>{item.detail}</p>{item.href && <a className="experience-link" href={item.href} target="_blank" rel="noopener noreferrer">Visit SkillsUSA website</a>}</div></div>)}</div></div></section>;
 }
 
 function Recognition() {
